@@ -378,190 +378,66 @@ By independently employing a fusion process at every scale level, the potential 
 
 \chapter{Results and Discussion}
 This dehazing technique is compared with the existing specialized underwater restoration/enhancement techniques and the utility of this approach for applications such as segmentation and keypoint matching is proved.
-\section{Underwater White Balancing Evaluation}
-Since in general the color is captured differently by various cameras,  white balancing approach described in is robust to the camera settings.
-
-\section{Synthesis of Quantum dots}
-There are many methods or techniques used in fabrication or synthesis of quantum dots that can be classified as:
-\begin{itemize}
-\item{Top-down method}
-\item{Bottom-up method}
-\end{itemize}
-\subsection*{Top-down method}
-In this method large pieces of the material are carved to the desired nanostructure. One such method is Electron-beam Lithography. In electron beam lithography electron beam system is used to etch well defined patterns on a bulk semiconductor. Then semiconductor layers are grown according to a well- established protocol in micro-technology. 
+\section{Video Dehazing}
+The proposed strategy was tested for real underwater image and videos taken from different available amateur and professional photographer collections, captured using various cameras and setups. Processing only 8-bit data format makes this validation relevant for common
+low-end cameras. Interestingly, this fusion-based algorithm has the advantage to employ only a reduced set of parameters that can be automatically set. Specifically, the white balancing process relies on the single parameter $\alpha$, which is set to 1 in all our experiments. For the multi-scale fusion, the number of decomposition levels depends on the image size, and is defined so that the size of the smallest resolution reaches a few tenth of pixels.
 \begin{figure}[H]
 \centering
-\includegraphics[width=12cm,height=10cm]{litho}
-\caption[Electron Beam Lithography]{Electron Beam Lithography \cite{syn}}
-\label{Electron Beam Lithography}
+\includegraphics[width=15cm,height=5cm]{Video.png}
+\caption[Underwater Video Dehazing]{Underwater Video Dehazing}
+\label{Underwater Video Dehazing}
 \end{figure}
-
-\subsection*{Bottom-up method}
-Bottom-up method is also called self-assembly growth. Molecular Beam Epitaxy (MBE) and Metal Organic Chemical Vapor Deposition (MOCVD) are widely used in the growth of the superlattice with different materials of different lattice constants. Semiconducting compound with a smaller lattice constant is grown (deposited atom by atom) on the surface of a compound with a larger lattice constant. The relaxation of the grown layer after specific growth thickness due to lattice mismatch results in nucleation of islands of random shapes and controllable size. This growth mode is known as Stranski-Krastanov growth. MBE method is slow and expensive. However, growth control of quantum dots is precise and multi-layers of quantum dots is possible. MOCVD is used in mass production of sample wafers and in contrast to MBE the growth of crystals is by chemical reaction and not physical deposition. In this approach high vacuum and temperature are required.
+This approach generally results in good perceptual quality, with significant enhancement of the global contrast, the color, and the image structure details. The main limitations are related to the fact that: (i) color can not always be fully restored, and (ii) some haze is maintained, especially in the scene regions that are far from the camera. Those limitations are however limited, especially when compared to previous works.
+\section{Applications}
+\subsection{Segmentation}
+Segmentation aims at dividing images into disjoint and homogeneous regions with respect to some characteristics (e.g. texture, color). In this work, we employ the GAC++ segmentation algorithm, which corresponds to a seminal geodesic active contours method (variational PDE). The segmentation result is more consistent when segmentation is applied to images that have been processed by this approach.
 \begin{figure}[H]
 \centering
-\includegraphics[width=12cm,height=8cm]{beam}
-\caption[Molecular beam Epitaxy]{Molecular beam Epitaxy \cite{syn}}
-\label{Molecular beam Epitaxy}
+\includegraphics[width=15cm,height=5cm]{Segment.png}
+\caption[Image Segmentation]{Image Segmentation}
+\label{Image Segmentation}
 \end{figure}
-
-\chapter{Quantum dot Solar cell}
-In Quantum dot solar cell the tunable bandgap property of quantum dots is used to increase the efficiency of solar cells.
-\section{Intermediate Band Quantum dot Solar cell}
-\subsection{Structure}
-The intermediate band (IB) solar cell has an allowed electron energy band within the bandgap in order to obtain current from sub-bandgap photons. Provided the electron in the IB are characterized by a Quasi Fermi level (QFL) that is independent of those in the conduction band (CB) and in the valence band (VB), the voltage of the cell can be determined by the CB and VB QFL positions. In this way the solar cell can deliver electron at a voltage  that is above the energy of the less energetic photon that generates current. The thermodynamics requires more than one lower energy photons to cooperate in pumping this electron in order to deliver this high voltage. The confined levels of Quantum dots is used as an IB. The attractiveness of this solar cell is that the detailed balance efficiency limit, calculated following the lines of the elegant Shockley and Queisser (SQ) paper, is 63\%, compared with 41\% in the SQ model. \cite{ib} \\
+\subsection{Local Feature-point Matching}
+Local feature points matching is a fundamental task of many computer vision applications. The SIFT operator is employed to compute keypoints, and compare the keypoint computation and matching processes for a pair of underwater images, with the one computed for the corresponding pair of images enhanced by this method. The original implementation of SIFT is applied exactly in the same way in both cases. The promising achievements presented demonstrates that, by enhancing the global contrast and the local features in underwater images, our method significantly increases the number of matched pairs of keypoints.
 \begin{figure}[H]
 \centering
-\includegraphics[width=8cm,height=5cm]{simplestruct}
-\caption[A typical QDSC structure]{A typical QDSC structure \cite{pf}}
-\label{Quantum dots}
-\end{figure} 
-\subsection{Electron transfer between bands}
-Many attempts have been made to increase the efficiency  of solar cells by introducing an impurity energy level in the semiconductor band gap that absorbs additional lower energy photons. \\
-Usual semiconductor has valence band and conduction band, but in intermediate band solar cell (IBSC) an additional intermediate band (IB) is also present. The existence of an isolated IB within the fundamental bandgap \(E_G\) of the IB material enables the absorption of low energy photons through transition labeled (1) and (2). As the absorption of high energy photons is still possible through transition (3) the cell is capable of producing extra photocurrent with respect to conventional cell with gap \(E_G\). Very high conversion efficiency can be obtained because this enhanced photocurrent can be extracted without significant degradation of output voltage. The voltage at the contacts is limted by $E_{G}$ as it would be in the case of a conventional cell with that gap and not by the lower absorption thresholds $E_{H}$ and $E_{L}$. \cite{band}\\
-
-\begin{minipage}[t]{8cm}
-\flushleft
-\begin{figure}[H]
-\includegraphics[width=8cm,height=9cm]{ib1}
-\caption[Energy levels in IBSC]{Energy levels in IBSC \cite{band}}
-\label{Energy levels}
-\end{figure}
-\end{minipage}
-
-\begin{minipage}[t]{8cm}
-\begin{figure}[H]
-\flushright
-\includegraphics[width=8cm,height=9cm]{band}
-\caption[Band diagram of an IBSC]{Band diagram of an IBSC \cite{ib}}
-\label{Band Diagram}
-\end{figure}
-\end{minipage}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=8cm,height=8cm]{graph}
-\caption[Plot showing quantum efficiency of reference solar cell and Quantum dot solar cell]{Plot showing quantum efficiency of reference solar cell and Quantum dot solar cell \cite{plot}}
-\label{Band Diagram}
+\includegraphics[width=15cm,height=9cm]{Feature.png}
+\caption[Local Feature-point Matching]{Local Feature-point Matching}
+\label{Local Feature-point Matching}
 \end{figure}
 
-\subsection{Diode equivalent circuit model}
-The diode equivalent model consists of a diode $D_{VC}$ (Recombination path from the CB to VB), $D_{IC}$(Recombination path from the IB to CB), $D_{VI}$ (Recombination path from the VB to IB),and $JL_{VC}$ 
-(current source from VB to CB), $JL_{IC}$ (current source from IB to CB), $JL_{VI}$ (current source from VB to IB), and a series resistance $R_S$, and a shunt resistance $R_{sh}$ respectively. \\ 
-\begin{figure}[H]
-\centering
-\includegraphics[width=12cm,height=8cm]{em}
-\caption[Diode equivalent circuit model]{Diode equivalent circuit model \cite{em}}
-\label{Diode Equivalent}
-\end{figure}
-\subsection{Partial filling of IB}
-Partial filling of the intermediate band has to be achieved in order to provide strong absorption in transitions from it to both the valence band and the conduction band. The condition of partial filling of the IB is required in order to have empty states for receiving the electron pumped from the valence band (VB) and the electron filled states to provide for the electrons pumped to the conduction band (CB). Partial filling is achieved by n-doping the barrier region so that the electron delivered by the donors fall into the otherwise empty intermediate band states. \cite{pf}\\
-
-\section{Tuned bandgap Solar cell}
-\subsection{Structure}
-Another alternative to increase the the efficiency of solar cell using quantum dot is to use multiple layers of quantum dots of different size.  The bandgap of the quantum dot changes based on the size of the dot. So, by incorporating quantum dot of different size the efficiency can be enhanced beyond the Shockley-Queisser limit.
-In tuned bandgap quantum dot solar cell the topmost layer has the least size (high bandgap) followed by quantum dots of intermediate size and finally quantum dots of large size (least bandgap). This arrangement causes the formation of sub-bandgaps which helps in the absorption of photons of different frequencies. Thus, ensuring  maximum utilization of solar spctrum.
-\begin{figure}[H]
-\centering
-\includegraphics[width=11cm,height=9cm]{tunedqd}
-\caption[Tuned bandgap Quantum dot Solar cell]{Tuned bandgap Quantum dot Solar cell \cite{multi}}
-\label{Tuned bandgap Quantum dot Solar cell}
-\end{figure}
-\subsection{Multiple Exciton Generation(MEG)}
-QD solar cells exploit the material quantum efficiency to increase the charge transport capabilities. Incident photons result in multiple exciton generation (MEG) due to impact ionization.
-Unlike bulk semiconductors where reduced impact ionization occurs due to faster electron-phonon relaxation times, quantum dots have high impact ionization rates compared to the carrier relaxation time resulting in MEG and enhanced photocurrent.\\
-A photon with energy $E>2E_{G}$ excites an electron to the conduction band due to impact ionization. Since quantum dots have discrete energy levels, the excess energy can be used to excite an electron from the valence band to the conduction band.\\ 
-\begin{figure}[H]
-\centering
-\includegraphics[width=9cm,height=8cm]{meg}
-\caption[Multiple Exciton Generation(MEG)]{Multiple Exciton Generation(MEG)\cite{meg}}
-\label{Tuned bandgap Quantum dot Solar cell}
-\end{figure}
-\pagebreak
-\chapter{Efficiency Deteriorating effects}
-Theoretically, we can obtain efficiency upto 66\% using quantum dot solar cell (QDSC). But in reality this high efficiency is not obtained because of some internal deteriorating effects in QDSC.    
-\section{Carrier escape in Quantum dot solar cell}
-We can increase the efficiency of solar cell using quantum dots as an intermediate band. But this is not achieved because of some internal effects. The transition from valence band to intermediate band is strong but the transition from intermediate band to conduction band is weak due to carrier escape. \\
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=11cm,height=9cm]{carrier}
-\caption[Carrier escape in QD-IBSC]{Carrier escape in QD-IBSC \cite{effect}}
-\label{Carrier escape}
-\end{figure}
-
-Thermal escape and tunneling are the two main mechanisms of carrier escape in quantum dot solar cell.
-There are many reasons for carrier escape one among them is the reduced value of $E_{L}$. This gap is limited to about 0.2eV because of the confluence of an increase of the quantum dots gap under strain and the reduction in the effective $E_{G}$ gap caused by the numerous confined holes states and the quasicontinuum of states introduced by the wetting layer. Also, the existence of excited quantum dot confined states and localized energy levels associated with defects makes thermal escape easier and can assist tunneling escape process.\\
-
-Experimentally, the strategy implemented to enlarge the IB-CB gap and reduce thermal escape is the capping of the quantum dot with a thin layer of strain relief layer(SRL) like InAlGaAs. The use of SRL is an effective method to redshift $E_{H}$. This red shift is produced by the increase in the effective height/size of the quantum dots in the presence of SRL and the reduction in the local strain. In addition to this, in order to avoid tunneling we use spacers of sufficient thickness which acts as a barrier to carrier escape. \cite{carrier} \\
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=10cm,height=3cm]{data}
-\caption[Experimental data]{Experimental data \cite{carrier}}
-\label{Experimental data}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=13cm,height=9cm]{plot}
-\caption[Experimental result showing reduction in carrier escape due to incorporation of spacer]{Experimental result showing reduction in carrier escape due to incorporation of spacer \cite{carrier}}
-\label{Reduction in carrier escape}
-\end{figure}
-
-\section{Other disadvantages of quantum dot solar cell}
-\begin{itemize}
-\item{Defects in the shape of the Quantum dots}\\
-Defects in the quantum dot layers causes the formation of traps. This results in the accumulation of carriers in the trap. Thus, lowering of the photocurrent. Strain compensation layers used in quantum dot solar cell helps to smooth these defects. 
-\item{Toxicity of Quantum dots}\\
-Toxicity of quantum dots reduces the use of quantum dot solar cell. Non-toxic quantum dots can be used in replacement of toxic quantum dots.
-\end{itemize}
-
-%\addcontentsline{toc}{chapter{Conclusion and future scope}}
-\chapter{Conclusion and future scope}
-\justify
-Applications of Quantum dots in solar cells is a promising and rapidly progressing research avenue in modern nanophotonics. Solar cells based on Quantum dots are treated as third generation photoelectric converters whose efficiency is expected to be rather high, the device being cheaper than first and second generation solar cells. Incorporation of an intermediate level band using quantum dots in solar cells  enhances its efficiency to a maximum of 66\%. The efficiency of Solar cell can also be increased by using quantum dots of different sizes. These solar cells are capable of utilizing more parts of the solar spectrum. This can be practical and sustainable solution to the challenge of meeting the increasing global energy demand.\\
-\pagebreak
+\chapter{Conclusion}
+This Single image Fusion process an alternative approach to enhance underwater videos and images. This strategy builds on the fusion principle and does not require additional information than the single original image. Experiments prove that this approach is able to enhance a wide range
+of underwater images (e.g. different cameras, depths, light conditions) with high accuracy, being able to recover important faded features and edges.
 
 \addcontentsline{toc}{chapter}{Bibliography}
 \begin{thebibliography}{1}
-\bibitem{ib} A.Luque, P.G Linares, E. Antolin, I. Ramiro, C.D. Farmer, E. Hernandez, I. Tobias, C.R Stanley, and A. Marti, "Understanding the operation of quantum dot intermediate band solar cells",{\textit{J. Appl. Phys.}}, pp. 044502-1-044502-12, 2012.
+\bibitem{} R. Schettini and S. Corchs, “Underwater image processing: state of the art of restoration and image enhancement methods,” EURASIP J. Adv. Signal Process., vol. 2010, Dec. 2010, Art. no. 746052 
 
-\bibitem{pf}Antonio Marti, Lucas Cuadra, and Antonio Luque, "Partial Filling of a Quantum Dot Intermediate Band for Solar cells", {\textit{IEEE. T. Electron. Dev.}}, vol. 48, no. 10, pp. 2394-2399, 2001.
+\bibitem{} G. L. Foresti, “Visual inspection of sea bottom structures by an autonomous underwater vehicle,” IEEE Trans. Syst., Man, Cybern. B, Cybern., vol. 31, no. 5, pp. 691–705, Oct. 2001
 
+\bibitem{} M. D. Kocak, F. R. Dalgleish, M. F. Caimi, and Y. Y. Schechner, “A focus on recent developments and trends in underwater imaging,” Marine Technol. Soc. J., vol. 42, no. 1, pp. 52–67, 2008
 
-\bibitem{carrier} E. Antolin, A. Marti,  C.D. Farmer, P.G Linares, E. Hernandez, A.M Sanchez, t. Ben, S.I. Melina, C.R. Stanley, and A. Luque, "Reducing carrier escape in the InAs/GaAs quantum dot intermediate band solar cell", {\textit{J. Appl. Phys.}}, pp. 064513-1-064513-7, 2010.
+\bibitem{} C. Ancuti, C. O. Ancuti, C. De Vleeschouwer, and A. Bovik, “Night-time dehazing by fusion,” in Proc. IEEE ICIP, Sep. 2016, pp. 2256–2260
 
-\bibitem{em}A. Ogura, T. Morioka, P. Garcia-Linares, E. Hernandez, I. Ramiro, I. Artacho, E. Antolin, A. Marti, A. Luque, M. Yamaguchi, and Y. Okada, "Modelling of Quantum Dot Solar Cells for Concentrator PV Applications", in {\textit{Conference record of the 37th IEEE Photovoltaic Specialists Conference (PVSC)}}, IEEE, pp.002642-002645, 2011.
+\bibitem{} K. He, J. Sun, and X. Tang, “Single image haze removal using dark channel prior,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 33, no. 12, pp. 2341–2353, Dec. 2011
 
-\bibitem{band}E. Antolin, A. Marti, P.G Linares, I. Ramiro, E. Hernandez, C.D. Farmer, C.R Stanley, and A.Luque, "Advances in Quantum Dot Intermediate Band Solar Cells", in {\textit{Conference record of the 35th IEEE Photovoltaic Specialists Conference (PVSC)}}, IEEE, pp. 000065-000070, 2010.
+\bibitem{} P. Drews, Jr., E. Nascimento, F. Moraes, S. Botelho, M. Campos, and R. Grande-Brazil, “Transmission estimation in underwater single images,” in Proc. IEEE ICCV, Dec. 2013, pp. 825–830
 
+\bibitem{} A. Galdran, D. Pardo, A. Picón, and A. Alvarez-Gila, “Automatic red-channel underwater image restoration,” J. Vis. Commun. Image Represent., vol. 26, pp. 132–145, Jan. 2015
 
-\bibitem{photon} Antonio Luque and Antonio Marti, "Increasing the Efficiency of Ideal Solar cell by Photon Induce Transitions at intermediate Levels", {\textit{Phys. Rev. Lett.}}, vol 78, no. 26, pp.5014-5017,1997.
+\bibitem{} H. Lu, Y. Li, L. Zhang, and S. Serikawa, “Contrast enhancement for images in turbid water,” J. Opt. Soc. Amer. A, Opt. Image Sci., vol. 32, no. 5, pp. 886–893, May 2015
 
+\bibitem{} R. Fattal, “Dehazing using color-lines,” ACM Trans. Graph., vol. 34, Nov. 2014, Art. no. 13
+\bibitem{} C. Ancuti, C. O. Ancuti, T. Haber, and P. Bekaert, “Enhancing underwater images and videos by fusion,” in Proc. IEEE CVPR, Jun. 2012,
+pp. 81–88
 
-\bibitem{plot} Zerui Zheng1, Haining Ji1, Peng Yu1, and Zhiming Wang1, "Recent Progress Towards Quantum Dot Solar Cells with Enhanced Optical Absorption", {\textit{Nano. Lett}}, pp. 1-8, 2016.
+\bibitem{} {https://www.youtube.com/watch?v=dWCsUxbOYaI}
 
-\bibitem{effect} Yushuai Dail, Christopher G. Bailel, Christopher. Kerestesl, David V. Forbesl, and Seth M. Hubbard, "Investigation of Carrier Escape Mechanism in InAs/GaAs Quantum Dot Solar Cells", in {\textit{Conference record of the 38th IEEE Photovoltaic Specialists Conference (PVSC)}}, pp. 000039-000040, 2012. 
+\bibitem{} {https://github.com/mohitkumarahuja/Underwater-Image-Enhancement-by-Wavelength-Compensation-and-Dehazing}
 
-\bibitem{} A. Marti, L. Cuadra, and A. Luque, "Quantum dot intermediate band solar cell", in {\textit{Conference record of the 28th IEEE Photovoltaic Specialists Conference (PVSC)}}, pp. 940-943, 2000.
+\bibitem{} {https://github.com/zhenglab/UnderwaterImageRestoration/tree/master/underwater%20image%20enhancement}
 
-\bibitem{} Hossain M K, Haque M D, "Performance Analysis of Intermediate Band Solar Cell (IBSC)", {\textit{J Material Sci Eng}}, vol. 4, no.6, pp. 1-8, 2015.
-
-\bibitem{solar} {http://www.explodedhome.com/how-solar-panels-work/.}
-
-\bibitem{chara} {http://pveducation.org/pvcdrom/solar-cell-structure.}
-
-\bibitem{gen} {http://cdn.intechopen.com/pdfs-wm/38725.pdf.}
-
-\bibitem{meg} {https://energysciences.nrel.gov/chemical$_$nanoscale.html.}
-
-\bibitem{multi} {http://iopscience.iop.org/journal/0957-4484/labtalk/article/34339}
-
-\bibitem{sq} {https://en.wikipedia.org/wiki/Shockley$%$E2$%$80$%$93Queisser$_$limit}
-
-\bibitem{el} {http://www.sigmaaldrich.com/}
-
-\bibitem{syn} {http://www.intechopen.com/books/solar-cells-new-approaches-and-reviews/quantum-dots-solar-cells}
+\bibitem{} {https://pdfs.semanticscholar.org/045e/b4ccdc3050a951164966dda189f44bc680fd.pdf}
 \end{thebibliography}
 \end{document}
