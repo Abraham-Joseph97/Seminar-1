@@ -186,15 +186,9 @@ HDR - High-Dynamic-Range\\
 \vspace{0.5cm}
 CVPR - Computer Vision and Pattern Recognition\\
 \vspace{0.5cm}
-IBSC - Intermediate Band Solar Cell\\
+GAC - Global Assembly Cache\\
 \vspace{0.5cm}
-MEG - Multiple Exciton Generation\\
-\vspace{0.5cm}
-QDSC - Quantum Dot Solar Cell\\
-\vspace{0.5cm}
-QD- IBSC - Quantum Dot Intermediate Band Solar Cell\\
-\vspace{0.5cm}
-SRL - Strain Relief Layer\\
+PDE - Partial Different Equation\\
 \end{flushleft}
 \pagebreak
 
@@ -300,7 +294,7 @@ Additionally, this white balancing strategy yields significant improvement in es
 image version we obtain comparable and even better estimates than the specialized underwater techniques of UDCP, MDCP and BP.
 \begin{figure}[H]
 \centering
-\includegraphics[width=15cm,height=5cm]{transmission.png}
+\includegraphics[width=15cm,height=5cm]{Transmission.png}
 \caption[Underwater Transmission Estimation]{Underwater Transmission Estimation}
 \label{Underwater Transmission Estimation}
 \end{figure}
@@ -310,9 +304,9 @@ image version we obtain comparable and even better estimates than the specialize
 Image fusion has shown utility in several applications such as image compositing, multispectral video enhancement, defogging, and HDR imaging. Here, the aim is a simple and fast approach that is able to increase the scene visibility in a wide range of underwater videos and images. This framework builds on a set of inputs and weight maps derived from a single original image. A pair of inputs is introduced to respectively enhance the color contrast and the edge sharpness of the white-balanced image, and the weight maps are defined to preserve the qualities and reject the defaults of those inputs, i.e. to overcome the artifacts induced by the light propagation limitation in underwater medium.\\To derive the inputs from the original image, the CVPR algorithm did assume that the back-scattering component (due to the artificial light that hits the water particles and is then reflected back to the camera) has a reduced influence. This assumption is generally valid for underwater scenes decently illuminated by natural light, but fails in more challenging illumination scenarios. Alternative definition of inputs and weights are taken in order to deal with severley degraded scenes without relying on the optical model.\\ This underwater dehazing technique consists in three main steps: inputs derivation from the white balanced underwater image, weight maps definition, and multi-scale fusion of the inputs and weight maps.
 
 \section{Inputs of the Fusion Process}
-Since the color correction is critical in underwater, first the white balancing technique is applied to the original image. This step aims at enhancing the image appearance by discarding unwanted color casts caused by various illuminants. In water deeper than 30 ft, white balancing suffers from noticeable effects since the absorbed colors are difficult to be recovered. As a result, to obtain the \textbf{first} input, a gamma correction of the white balanced image version is performed. Gamma correction aims at correcting the global contrast and is relevant since, in general, white balanced underwater images tend to appear too bright. This correction increases the difference between darker/lighter regions at the cost of a loss of details in the under-/over-exposed regions.\\ To compensate for this loss, a \textbf{second} input is derived that corresponds to a sharpened version of the white balanced image. Therefore, the unsharp masking principle is followed in the sense that a blurred or unsharp (here Gaussian filtered) version of the image is blended with the image to sharpen. The typical formula for unsharp masking defines the sharpened image $S$ as $S=I+\beta(I−G∗I)$, where $I$ is the image to sharpen (in our case the white balanced image), $G∗I$ denotes the Gaussian filtered version of $I$, and $\beta$ is a parameter. In practice, the selection of $\beta$ is not trivial. A small $\beta$ fails to sharpen $I$, but a too large $\beta$ results in over-saturated regions, with brighter highlights and darker shadows. To circumvent this problem, the sharpened image $S$ is defined as follows:
+Since the color correction is critical in underwater, first the white balancing technique is applied to the original image. This step aims at enhancing the image appearance by discarding unwanted color casts caused by various illuminants. In water deeper than 30 ft, white balancing suffers from noticeable effects since the absorbed colors are difficult to be recovered. As a result, to obtain the \textbf{first} input, a gamma correction of the white balanced image version is performed. Gamma correction aims at correcting the global contrast and is relevant since, in general, white balanced underwater images tend to appear too bright. This correction increases the difference between darker/lighter regions at the cost of a loss of details in the under-/over-exposed regions.\\ To compensate for this loss, a \textbf{second} input is derived that corresponds to a sharpened version of the white balanced image. Therefore, the unsharp masking principle is followed in the sense that a blurred or unsharp (here Gaussian filtered) version of the image is blended with the image to sharpen. The typical formula for unsharp masking defines the sharpened image $S$ as $S=I+\beta(I-G*I)$, where $I$ is the image to sharpen (in our case the white balanced image), $G∗I$ denotes the Gaussian filtered version of $I$, and $\beta$ is a parameter. In practice, the selection of $\beta$ is not trivial. A small $\beta$ fails to sharpen $I$, but a too large $\beta$ results in over-saturated regions, with brighter highlights and darker shadows. To circumvent this problem, the sharpened image $S$ is defined as follows:
 \begin{equation}
-S=(I+\Nu{I-G*I})/2
+S=(I+N(I-G*I))/2
 \end{equation}
 with $N{.}$ denoting the linear normalization operator, also named histogram stretching in the literature. This operator shifts and scales all the color pixel intensities of an image with a unique shifting and scaling factor defined so that the set of transformed pixel values cover the entire available dynamic range.The sharpening method defined is referred to as normalized unsharp masking process in the following. It has the advantage to not require any parameter tuning, and appears to be effective in terms of sharpening. 
 \begin{figure}[H]
@@ -330,47 +324,49 @@ The weight maps are used during blending in such a way that pixels with a high w
 \item{\textbf{\textit{Saliency weight}} ($W_S$) aims at emphasizing the salient objects that lose their prominence in the underwater scene. To measure the saliency level, a saliency estimator is employed. This computationally efficient algorithm has been inspired by the biological concept of center-surround contrast. However, the saliency map tends to favor highlighted areas (regions with high luminance values). To overcome this limitation, an additional weight map based on the observation that saturation decreases in the highlighted regions is introduced.}
 \item{\textbf{\textit{Saturation weight}} ($W_{Sat}$) enables the fusion algorithm to adapt to chromatic information by advantaging highly saturated regions. This weight map is simply computed (for each input $I_k$) as the deviation (for every pixel location) between the $R_k$, $G_k$ and $B_k$ color channels and the luminance $L_k$ of the $k^{th}$ input:
 \begin{equation}
-W_{sat}=\sqrt{1/3*[(R_k-L_k)^2+(G_k-L_k)^2+(B_k-L_k)^2]}
+W_{sat}=\sqrt{(1/3)[(R_k-L_k)^2+(G_k-L_k)^2+(B_k-L_k)^2]}
 \end{equation}
 }
 \end{itemize}
 \begin{figure}[H]
 \centering
-\includegraphics[width=15cm,height=5cm]{Weight.png}
+\includegraphics[width=15cm,height=3cm]{Weight.png}
 \caption[Weight Maps]{Weight Maps}
 \label{Weight Maps}
 \end{figure}
 In practice, for each input, the three weight maps are merged in a single weight map as follows. For each input $k$, an aggregated weight map $W_k$ is first obtained by summing up the three $W_L$ , $W_S$ , and $W_{Sat}$ weight maps. The $K$ aggregated maps are then normalized on a pixel-per-pixel basis, by dividing the weight of each pixel in each map by the sum of the weights of the same pixel over all maps. Formally, the
 normalized weight maps $\overline{W}_k$ are computed for each input as:
 \begin{equation}
-\overline{W}_{sat}=(W_k+\delta)/(\sum_{k=1}^{K}W_k + K*\delta)
+\overline{W}_{k}=(W_k+\delta)/(\sum_{k=1}^{K}W_k + K.\delta)
 \end{equation}
 with $\delta$ denoting a small regularization term that ensures that each input contributes to the output. $\delta$ is set to 0.1 in the rest of the paper. The normalized weights of corresponding weights are shown. These three weight maps are used. The exposedness weight map tends to amplify some artifacts, such as ramp edges of our second input, and to reduce the benefit derived from the gamma corrected image in terms of image contrast. Originally, in an exposure fusion context, the exposedness weight map had been introduced to reduce the weight of pixels that are under- or over-exposed. Hence, this weight map assigns large (small) weight to input pixels that are close to (far from) the middle of the image dynamic range. Here since the gamma corrected input tends to exploit the whole dynamic range, the use of the exposedness weight map tends to penalize it in favor of the sharpened image, thereby inducing some sharpening artifacts and missing some contrast enhancements.
 
 \section{Naive Fusion Process}
 Given the normalized weight maps, the reconstructed image $R(x)$ could typically be obtained by fusing the defined inputs with the weight measures at every pixel location $(x)$:
 \begin{equation}
-R(x)=\sum_{k=1}^{K}\overline(W)_k(x)*I_k(x)
+R(x)=\sum_{k=1}^{K}\overline{W}_k(x)I_k(x)
 \end{equation}
 where $I_k$ denotes the input ($k$ is the index of the inputs $K=2$ in our case) that is weighted by the normalized weight maps $\overline{W}_k$. In practice, the naive approach introduces undesirable halos. A common solution to overcome this limitation is to employ multi-scale linear, or non-linear filters.
 
 \section{Multi-Scale Fusion Process}
 The multi-scale decomposition is based on Laplacian pyramid. The pyramid representation decomposes an image into a sum of bandpass images. In practice, each level of the pyramid does filter the input image using a low-pass Gaussian kernel $G$, and decimates the filtered image by a factor of 2 in both directions. It then subtracts from the input an up-sampled version of the low-pass image, thereby approximating the (inverse of the) Laplacian, and uses the decimated low-pass image as the input for the subsequent level of the pyramid. Formally, using $G_l$ to denote a sequence of $l$ low-pass filtering and decimation, followed by $l$ up-sampling operations, we define the $N$ levels $L_l$ of the pyramid as follows:
 \begin{equation}
-I(x) & = I(x)-G_1{I(x)}+G_1{I(x)} \triangleq L_1{I(x)}+G_1{I(x)}
-& = L_1{I(x)}+G_1{I(x)}-G_2{I(x)}+G_2{I(x)}
-& = L_1{I(x)}+L_2{I(x)}+G_2{I(x)}
-& = ...
-& = \sum_{l=1}^{N}L_l{I(x)}
+\begin{split}
+I(x) & = I(x)-G_1[I(x)]+G_1[I(x)] \triangleq L_1[I(x)]+G_1[I(x)]\\
+& = L_1[I(x)]+G_1[I(x)]-G_2[I(x)]+G_2[I(x)]\\
+& = L_1[I(x)]+L_2[I(x)]+G_2[I(x)]\\
+& = ...\\
+& = \sum_{l=1}^{N}L_l[I(x)]
+\end{split}
 \end{equation}
 In this equation, $L_l$ and $G_l$ represent the $l^{th}$ level of the Laplacian and Gaussian pyramid, respectively. To write the equation, all those images have been up-sampled to the original image dimension. However, in an efficient implementation, each level $l$ of the pyramid is manipulated at native subsampled resolution. Following the traditional multi-scale fusion strategy, each source input $I_k$ is decomposed into a Laplacian pyramid while the normalized weight maps $\overline{W}_k$ are decomposed using a Gaussian pyramid. Both pyramids have the same number of levels, and the mixing of the Laplacian inputs with the Gaussian normalized weights is performed independently at each level $l$:
 \begin{equation}
-R_l(x)=\sum_{k=1}^{K}G_l{\overline(W)_k(x)}*L_1{I_k(x)}
+R_l(x)=\sum_{k=1}^{K}G_l[\overline{W}_k(x)]L_1[I_k(x)]
 \end{equation}
 where $l$ denotes the pyramid levels and $k$ refers to the number of input images. In practice, the number of levels $N$ depends on the image size, and has a direct impact on the visual quality of the blended image. The dehazed output is obtained by summing the fused contribution of all levels, after appropriate upsampling.
 \begin{figure}[H]
 \centering
-\includegraphics[width=15cm,height=5cm]{Dehaze.png}
+\includegraphics[width=16cm,height=8cm]{Dehaze.png}
 \caption[Overview of Dehazing Schemes]{Overview of Dehazing Schemes}
 \label{Overview of Dehazing Schemes}
 \end{figure}
@@ -393,7 +389,7 @@ This approach generally results in good perceptual quality, with significant enh
 Segmentation aims at dividing images into disjoint and homogeneous regions with respect to some characteristics (e.g. texture, color). In this work, we employ the GAC++ segmentation algorithm, which corresponds to a seminal geodesic active contours method (variational PDE). The segmentation result is more consistent when segmentation is applied to images that have been processed by this approach.
 \begin{figure}[H]
 \centering
-\includegraphics[width=15cm,height=5cm]{Segment.png}
+\includegraphics[width=15cm,height=13cm]{Segment.png}
 \caption[Image Segmentation]{Image Segmentation}
 \label{Image Segmentation}
 \end{figure}
