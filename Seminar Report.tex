@@ -113,15 +113,15 @@ is a bonafide account of his work done under our supervision. \\
 \vspace{2cm}
 \begin{minipage}[t]{10cm}
 \flushleft \textbf{Seminar Co-ordinator}\\
-Prof. Rajesh Mohan R\\
+Prof. Sheeba P S\\
 Associate Professor\\
 Dept. of Electronics and\\
 Communication Engineering
 \end{minipage}
 \vspace{2cm}
-\begin{minipage}[t]{5cm}
+\begin{minipage}[t]{6cm}
 \flushleft \textbf{Seminar Guide}\\
-Prof. Nima Dharmapal\\
+Assist. Prof. Nima P Dharmapal\\
 Assistant Professor\\
 Dept. of Electronics and\\
 Communication Engineering
@@ -133,10 +133,10 @@ Communication Engineering
 %\end{minipage}
 
 %\addcontentsline{toc}{chapter}{Abstract}
-\chapter*{Abstract}
+\chapter*{\centering Abstract}
 \justify
 \textit{
-Underwater environment offers many rare attractions for photography. Underwater imaging has also been an important source of interest in different branches of technology and scientific research. But underwater images suffer from poor visibility resulting from the attenuation of the propagated light. Underwater image dehazing techniques are present but they require complex hardware to capture multiple data of underwater environment. However, these issues can be avoided by using 'Colour Balance and Fusion Technique'. This method is a single image approach that does not require specialized hardware or knowledge about the underwater conditions or scene structure. It builds on the blending of two images that are directly derived from a color compensated and white-balanced version of the original degraded image. The two images to fusion, as well as their associated weight maps, are defined to promote the transfer of edges and color contrast to the output image. To avoid that the sharp weight map transitions create artifacts in the low frequency components of the reconstructed image, a multiscale fusion strategy is adopted. Extensive qualitative and quantitative evaluation reveals that our enhanced images and videos are characterized by better exposedness of the dark regions, improved global contrast, and edges sharpness. This algorithm is reasonably independent of the camera settings, and improves the accuracy of several image processing applications, such as image segmentation and keypoint matching.}\\
+Underwater environment offers many rare attractions for photography. Underwater imaging has also been an important source of interest in different branches of technology and scientific research. But underwater images suffer from poor visibility resulting from the attenuation of the propagated light. Underwater image dehazing techniques are present but they require complex hardware to capture multiple data of underwater environment. However, these issues can be avoided by using `Colour Balance and Fusion Technique'. This method is a single image approach that does not require specialized hardware or knowledge about the underwater conditions or scene structure. It builds on the blending of two images that are directly derived from a color compensated and white-balanced version of the original degraded image. The two images to fusion, as well as their associated weight maps, are defined to promote the transfer of edges and color contrast to the output image. To avoid that the sharp weight map transitions create artifacts in the low frequency components of the reconstructed image, a multiscale fusion strategy is adopted. Extensive qualitative and quantitative evaluation reveals that the enhanced images and videos are characterized by better exposedness of the dark regions, improved global contrast, and edges sharpness. This algorithm is reasonably independent of the camera settings, and improves the accuracy of several image processing applications, such as image segmentation and keypoint matching.}\\
 
 \textit{\textbf{keyword}}- 
 Underwater Optical Model, Red Channel Equalisation, Gray World, Multi-Scale Fusion, Gaussian Pyramid.
@@ -168,27 +168,27 @@ Underwater Optical Model, Red Channel Equalisation, Gray World, Multi-Scale Fusi
 
 \section*{List of Abbreviations}
 \begin{flushleft}
+BP - Background Prior\\
+\vspace{0.5cm}
+CVPR - Computer Vision and Pattern Recognition\\
+\vspace{0.5cm}
 DCP -  Dark Channel Prior\\ 
 \vspace{0.5cm}
-UDCP - Underwater Dark Channel Prior\\
+GAC - Global Assembly Cache\\
 \vspace{0.5cm}
-SIFT - Scale-Invariant Feature Transform\\
-\vspace{0.5cm}
-UWLI - Underwater Lidar Imaging System\\
+HDR - High-Dynamic-Range\\
 \vspace{0.5cm}
 HR - High Resolution\\
 \vspace{0.5cm}
 MDCP - Median Dark Channel Prior\\
 \vspace{0.5cm}
-BP - Background Prior\\
-\vspace{0.5cm}
-HDR - High-Dynamic-Range\\
-\vspace{0.5cm}
-CVPR - Computer Vision and Pattern Recognition\\
-\vspace{0.5cm}
-GAC - Global Assembly Cache\\
-\vspace{0.5cm}
 PDE - Partial Different Equation\\
+\vspace{0.5cm}
+SIFT - Scale-Invariant Feature Transform\\
+\vspace{0.5cm}
+UDCP - Underwater Dark Channel Prior\\
+\vspace{0.5cm}
+UWLI - Underwater Lidar Imaging System\\
 \end{flushleft}
 \pagebreak
 
@@ -199,10 +199,9 @@ On the recollection of so many great favors and blessings, I offer my sincere th
 %\vspace{1cm}
 
 I express my heartfelt gratitude to \textbf{Prof. Dr. V P Devassia}, Principal, Govt. Model Engineering College, Thrikkakara for providing me with excellent library facilities. \\
-I sincerely thank Prof. Nima Dharmapal, Assistant Professor of Department of Electronics and Communication Engineering, for her timely advice and suggestions.\\
+I sincerely thank \textbf{Ms. Nima Dharmapal}, Assistant Professor of Department of Electronics and Communication Engineering, for her timely advice and suggestions.\\
 
-%I am thankful to my seminar coordinator \textbf{Prof. Rajesh Mohan R}, Associate Professor, Department of Electronics and Communication Engineering for the full-fledged support and guidance. I would like to express my sincere gratitude to \textbf{Dr. Jobymol Jacob}, Professor, Department of Electronics and Communication Engineering, who has always motivated me and helped me to do everything in a better way.  \\
-%\vspace{1cm}
+I am thankful to my seminar coordinator \textbf{Prof. Sheeba P S}, Associate Professor, Department of Electronics and Communication Engineering for the full-fledged support and guidance.  \\
 
 Last but not the least I am thankful to one and all of the Department of Electronics and Communication Engineering and the whole library staff for their co-operation and active involvement.
 I also thank my colleagues for their support.
@@ -211,7 +210,7 @@ I also thank my colleagues for their support.
 \pagestyle{fancy}
 \chapter{Introduction}
 \justify
-Underwater environment offers many rare attractions such as marine animals and fishes, amazing landscape, and mysterious shipwrecks. Besides underwater photography, underwater imaging has also been an important source of interest in different branches of technology and scientific research, such as inspection of underwater infrastructures and cables, detection of man made objects, control of underwater vehicles, marine biology research, and archeology. Different from common images, underwater images suffer from poor visibility resulting from the attenuation of the propagated light, mainly due to absorption and scattering effects. The absorption substantially reduces the light energy, while the scattering causes changes in the light propagation direction. They result in foggy appearance and contrast degradation, making distant objects misty. Practically, in common sea water images, the objects at a distance of more than 10 meters are almost unperceivable, and the colors are faded because their composing wavelengths are cut according to the water depth. There have been several attempts to restore and enhance the visibility of such degraded images. Since the deterioration of underwater scenes results from the combination of multiplicative and additive processes traditional enhancing techniques such as gamma correction, histogram equalization appear to be strongly limited for such a task. In the previous works, the problem has been tackled by tailored acquisition strategies using multiple images, specialized hardware or polarization filters. Despite of their valuable achievements, these strategies suffer from a number of issues that reduce their practical applicability. This is a novel approach to remove the haze in underwater images based on a single image captured with a conventional camera. Our approach builds on the fusion of multiple inputs, but derives the two inputs to combine by correcting the contrast and by sharpening a white-balanced version of a single native input image. The white balancing stage aims at removing the color cast induced by underwater light scattering, so as to produce a natural appearance of the sub-sea images. The multi-scale implementation of the fusion process results in an artifact-free blending.
+Underwater environment offers many rare attractions such as marine animals and fishes, amazing landscape, and mysterious shipwrecks. Besides underwater photography, underwater imaging has also been an important source of interest in different branches of technology and scientific research, such as inspection of underwater infrastructures and cables, detection of man made objects, control of underwater vehicles, marine biology research, and archeology. Different from common images, underwater images suffer from poor visibility resulting from the attenuation of the propagated light, mainly due to absorption and scattering effects. The absorption substantially reduces the light energy, while the scattering causes changes in the light propagation direction. They result in foggy appearance and contrast degradation, making distant objects misty. Practically, in common sea water images, the objects at a distance of more than 10 meters are almost unperceivable, and the colors are faded because their composing wavelengths are cut according to the water depth. There have been several attempts to restore and enhance the visibility of such degraded images. Since the deterioration of underwater scenes results from the combination of multiplicative and additive processes traditional enhancing techniques such as gamma correction, histogram equalization appear to be strongly limited for such a task. In earlier methods, the problem has been tackled by tailored acquisition strategies using multiple images, specialized hardware or polarization filters. Despite of their valuable achievements, these strategies suffer from a number of issues that reduce their practical applicability. This is a novel approach to remove the haze in underwater images based on a single image captured with a conventional camera. This approach builds on the fusion of multiple inputs, but derives the two inputs to combine by correcting the contrast and by sharpening a white-balanced version of a single native input image. The white balancing stage aims at removing the color cast induced by underwater light scattering, so as to produce a natural appearance of the sub-sea images. The multi-scale implementation of the fusion process results in an artifact-free blending.
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm,height=5cm]{Block.png}
@@ -227,7 +226,7 @@ is several hundreds of times denser in seawater than in normal atmosphere. As a 
 \begin{equation}
 E_D(x)=J(x)e^{-\eta d(x)}=J(x)t(x)
 \end{equation}
-where $J(x)$ is the radiance of the object, $d(x)$ is the distance between the observer and the object, and $\eta$ is the attenuation coefficient. The exponential term $e^{−\eta d(x)}$ is also known as the transmission $t(x)$ through the underwater medium.\\
+where $J(x)$ is the radiance of the object, $d(x)$ is the distance between the observer and the object, and $\eta$ is the attenuation coefficient. The exponential term $e^{-\eta d(x)}$ is also known as the transmission $t(x)$ through the underwater medium.\\
 Besides the absorption, the floating particles existing in the underwater mediums also cause the deviation (scattering) of the incident rays of light. Forward-scattering results from a random deviation of a light ray on its way to the camera lens. It has been determined experimentally that its impact can be approximated by the convolution between the direct attenuated component, with a point spread function that depends on the distance between the image plane and the object. Back-scattering is due to the artificial light (e.g. flash) that hits the water particles, and is reflected back to the camera. Back-scattering acts like a glaring veil superimposed on the object. The influence of this component may be reduced significantly by simply changing the position and angle of the artificial light source so that most of the reflected particle light do not reach the camera. However, in many practical cases, back-scattering remains the principal source of contrast loss and color shifting in underwater images. Mathematically, it is often expressed as:
 \begin{equation}
 E_{BS}(x)=B_{\infty}(x)(1-e^{-\eta d(x)})
@@ -284,7 +283,7 @@ Mathematically, to account for the above observations, we propose to express the
 \begin{equation}
 I_{rc}(x)=I_r(x)+\alpha.(\overline{I}_g-\overline{I}_r).(1-I_r(x)).I_g(x)
 \end{equation}
-where $I_r$, $I_g$ represent the red and green color channels of image $I$, each channel being in the interval $[0, 1]$, after normalization by the upper limit of their dynamic range, while $\overline{I}_r$ and $\overline{I}_g$ denote the mean value of $I_r$ and $I_g$. Each factor in the second term directly results from one of the above observations, and α denotes a constant parameter. In practice, our tests have revealed that a value of $\alpha=1$ is appropriate for various illumination conditions and acquisition settings.\\
+where $I_r$, $I_g$ represent the red and green color channels of image $I$, each channel being in the interval $[0, 1]$, after normalization by the upper limit of their dynamic range, while $\overline{I}_r$ and $\overline{I}_g$ denote the mean value of $I_r$ and $I_g$. Each factor in the second term directly results from one of the above observations, and $\alpha$ denotes a constant parameter. In practice, tests have revealed that a value of $\alpha=1$ is appropriate for various illumination conditions and acquisition settings.\\
 To complete our discussion about the severe and color-dependent attenuation of light under water, it is worth noting the works, which reveal and exploit the fact that, in turbid waters or in places with high concentration of plankton, the blue channel may be significantly attenuated due to absorption by organic matter. To address those cases, when blue is strongly attenuated and the compensation of the red channel appears to be insufficient, we propose to also compensate for the blue channel attenuation, i.e. we compute the compensated blue channel $I_{bc}$ as:
 \begin{equation}
 I_{bc}(x)=I_b(x)+\alpha.(\overline{I}_g-\overline{I}_b).(1-I_b(x)).I_g(x)
@@ -312,8 +311,8 @@ with $N{.}$ denoting the linear normalization operator, also named histogram str
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm,height=3.5cm]{NUM.png}
-\caption[Comparison between traditional Unsharp Masking and normalized Unharp Masking]{Comparison between traditional unsharp masking and normalized Unharp Masking}
-\label{Comparison between traditional Unsharp Masking and normalized Unharp Masking}
+\caption[Comparison between traditional Unsharp Masking and normalized Unsharp Masking]{Comparison between traditional unsharp masking and normalized Unsharp Masking}
+\label{Comparison between traditional Unsharp Masking and normalized Unsharp Masking}
 \end{figure}
 This second input primarily helps in reducing the degradation caused by scattering. Since the difference between white balanced image and its Gaussian filtered version is a highpass signal that approximates the opposite of Laplacian, this operation has the inconvenient to magnify the high-frequency noise, thereby generating undesired artifacts in the second input. The multi-scale fusion strategy described in the next section will be in charge of minimizing the transfer of those artifacts to the final blended image.
 
@@ -372,7 +371,7 @@ where $l$ denotes the pyramid levels and $k$ refers to the number of input image
 \end{figure}
 By independently employing a fusion process at every scale level, the potential artifacts due to the sharp transitions of the weight maps are minimized. Multi-scale fusion is motivated by the human visual system, which is very sensitive to sharp transitions appearing in smooth image patterns, while being much less sensitive to variations/artifacts occurring on edges and textures (masking phenomenon). This single- scale approximation should definitely be encouraged when complexity is an issue, since it also turns the multiresolution process into a spatially localized procedure.
 
-\chapter{Results and Discussion}
+\chapter{Advantages}
 This dehazing technique is compared with the existing specialized underwater restoration/enhancement techniques and the utility of this approach for applications such as segmentation and keypoint matching is proved.
 \section{Video Dehazing}
 The proposed strategy was tested for real underwater image and videos taken from different available amateur and professional photographer collections, captured using various cameras and setups. Processing only 8-bit data format makes this validation relevant for common
@@ -384,8 +383,7 @@ low-end cameras. Interestingly, this fusion-based algorithm has the advantage to
 \label{Underwater Video Dehazing}
 \end{figure}
 This approach generally results in good perceptual quality, with significant enhancement of the global contrast, the color, and the image structure details. The main limitations are related to the fact that: (i) color can not always be fully restored, and (ii) some haze is maintained, especially in the scene regions that are far from the camera. Those limitations are however limited, especially when compared to previous works.
-\section{Applications}
-\subsection{Segmentation}
+\section{Segmentation}
 Segmentation aims at dividing images into disjoint and homogeneous regions with respect to some characteristics (e.g. texture, color). In this work, we employ the GAC++ segmentation algorithm, which corresponds to a seminal geodesic active contours method (variational PDE). The segmentation result is more consistent when segmentation is applied to images that have been processed by this approach.
 \begin{figure}[H]
 \centering
@@ -393,7 +391,7 @@ Segmentation aims at dividing images into disjoint and homogeneous regions with 
 \caption[Image Segmentation]{Image Segmentation}
 \label{Image Segmentation}
 \end{figure}
-\subsection{Local Feature-point Matching}
+\section{Local Feature-point Matching}
 Local feature points matching is a fundamental task of many computer vision applications. The SIFT operator is employed to compute keypoints, and compare the keypoint computation and matching processes for a pair of underwater images, with the one computed for the corresponding pair of images enhanced by this method. The original implementation of SIFT is applied exactly in the same way in both cases. The promising achievements presented demonstrates that, by enhancing the global contrast and the local features in underwater images, our method significantly increases the number of matched pairs of keypoints.
 \begin{figure}[H]
 \centering
@@ -405,9 +403,11 @@ Local feature points matching is a fundamental task of many computer vision appl
 \chapter{Conclusion}
 This Single image Fusion process an alternative approach to enhance underwater videos and images. This strategy builds on the fusion principle and does not require additional information than the single original image. Experiments prove that this approach is able to enhance a wide range
 of underwater images (e.g. different cameras, depths, light conditions) with high accuracy, being able to recover important faded features and edges.
-
+\pagebreak
 \addcontentsline{toc}{chapter}{Bibliography}
-\begin{thebibliography}{1}
+\begin{thebibliography}{14}
+\bibitem{}Codruta O. Ancuti, Cosmin Ancuti, Christophe De Vleeschouwer, and Philippe Bekaert, "Color Balance and Fusion for Underwater Image Enhancement", IEEE Transactions on Image Processing, VOL. 27, NO. 1, Jan 2018
+
 \bibitem{} R. Schettini and S. Corchs, “Underwater image processing: state of the art of restoration and image enhancement methods,” EURASIP J. Adv. Signal Process., vol. 2010, Dec. 2010, Art. no. 746052 
 
 \bibitem{} G. L. Foresti, “Visual inspection of sea bottom structures by an autonomous underwater vehicle,” IEEE Trans. Syst., Man, Cybern. B, Cybern., vol. 31, no. 5, pp. 691–705, Oct. 2001
@@ -431,8 +431,6 @@ pp. 81–88
 \bibitem{} {https://www.youtube.com/watch?v=dWCsUxbOYaI}
 
 \bibitem{} {https://github.com/mohitkumarahuja/Underwater-Image-Enhancement-by-Wavelength-Compensation-and-Dehazing}
-
-\bibitem{} {https://github.com/zhenglab/UnderwaterImageRestoration/tree/master/underwater\%20image\%20enhancement}
 
 \bibitem{} {https://pdfs.semanticscholar.org/045e/b4ccdc3050a951164966dda189f44bc680fd.pdf}
 \end{thebibliography}
