@@ -104,70 +104,36 @@ keepaspectratio]{Back.jpg}%
 
 \begin{document}
 
-%\AddToShipoutPicture*{\BackgroundPic}
-%\ClearShipoutPicture
+\AddToShipoutPicture*{\BackgroundPic}
+\ClearShipoutPicture
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-%\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
-%	\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for horizontal lines, change thickness here
-	
-%	\center % Centre everything on the page
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+\center % Centre everything on the page
 	
 	%------------------------------------------------
 	%	Headings
 	%------------------------------------------------
+{\huge\bfseries Underwater Image Enhancement}\\[0.4cm] % Title of your document
+\textsc{\huge Seminar Report}\\[0.4cm] % Major heading such as course name	
+\large Submitted in partial fulfillment for the award of the degree\\[0.1cm] \large of\\[0.2cm]
+\textbf{\LARGE BACHELOR OF TECHNOLOGY}\\[0.1cm]
+\textbf{\large IN}\\[0.1cm]
+\textbf{\LARGE ELECTORNICS AND COMMUNICATION\\[0.2cm] ENGINEERING}\\[0.4cm]
+\textsc{Submitted by}\\[0.1in]
 	
-%	\vfill
-%	\includegraphics[height=7cm,width=7cm]{logo}\\
+\Large\centering{P H Aju}\\
+\includegraphics[height=5cm,width=5cm]{logo.png}\\
 	
-%	\vfill % Position the date 3/4 down the remaining page
-	%{\large\today} % Date, change the \today to a set date if you want to be precise
-	
-%	\textsc{\LARGE Govt. Model Engineering College}\\[1.5cm] % Main heading such as the name of your university/college
-	
-%	\textsc{\Large Seminar Report}\\[0.5cm] % Major heading such as course name
-	
-%	\textsc{\large Department of Electronics and Communication Engineering}\\[0.5cm] % Minor heading such as course title
-	
-	%------------------------------------------------
-	%	Title
-	%------------------------------------------------
-	
-%	\HRule\\[0.4cm]
-	
-%	{\huge\bfseries Underwater Image Enhancement}\\[0.4cm] % Title of your document
-	
-%	\HRule\\[1.5cm]
-	
-	%------------------------------------------------
-	%	Author(s)
-	%------------------------------------------------
-%	\textsc{\Large Submitted By}\\[0.4cm]
-%	\textsc{\Large P H Aju}\\[0.5cm]
-	
-	% If you don't want a supervisor, uncomment the two lines below and comment the code above
-	%{\large\textit{Author}}\\
-	%John \textsc{Smith} % Your name
-	
-	%------------------------------------------------
-	%	Date
-	%------------------------------------------------
-	
-	
-	%------------------------------------------------
-	%	Logo
-	%------------------------------------------------
-	
-	%\vfill\vfill
-	%\includegraphics[width=0.2\textwidth]{placeholder.jpg}\\[1cm] % Include a department/university logo - this will require the graphicx package
-	 
-	%----------------------------------------------------------------------------------------
-	
-%	\vfill % Push the date up 1/4 of the remaining page
-	
-%\end{titlepage}
+\textsc{\Large Department of Electronics and Communication Engineering}\\[0.2cm] % Minor heading such as course title
+\textsc{\Large Govt. Model Engineering College}\\[0.2cm] % Main heading such as the name of your university/college
+\textsc{\Large Thrikkakara, Cochin - 682 021}\\[0.2cm] % Main heading such as the name of your university/college
+\textsc{\Large APJ Abdul Kalam Technological University}\\ % Main heading such as the name of your university/college
+\textsc{\Large November 2018} % Main heading such as the name of your university/college
+
+\end{titlepage}
 
 \pagenumbering{none}
 \centering
@@ -301,6 +267,7 @@ I also thank my colleagues for their support.
 \hbox{} \newpage 
 \pagenumbering{arabic} 
 \pagestyle{fancy}
+
 \chapter{Introduction}
 \fancyhf{}
 \fancyhead[r]{%
@@ -325,7 +292,6 @@ Underwater environment offers many rare attractions such as marine animals and f
 \fancyhead[r]{%
    % We want italics
    \itshape
-   % The chapter number only if it's greater than 0
    \footnotesize{\chaptermark}
    % The chapter title
    \leftmark}
